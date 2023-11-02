@@ -143,8 +143,8 @@ const AdminProfile = () => {
 <h4 className="mt-3">Subject Related-Lessons</h4>
 {subjects.length === 0 && (<p className='ml-3'>No Subjects/Lessons</p>)}
 {subjects?.map((sub)=>(
-  <div  className="bg-blue-100 w-3/4 rounded border border-gray-300 mb-3 ">
-  <h4 className="bg-red-100 p-2 text-black-900 font-medium text-center border border-gray-300">{sub.name}</h4>
+  <div  className="bg-gray-100 w-3/4 rounded border border-gray-300 mb-3 ">
+  <h4 className="bg-blue-100 p-2 text-black-900 font-medium text-center border border-gray-300">{sub.name}</h4>
     {sub?.lessons?.map((lesson,i)=>(
       <h6 className=" p-2 bg-white m-1 font-medium border-y border-gray-300 rounded">{i+1} - {lesson.title}</h6>
     ))}
@@ -156,8 +156,8 @@ const AdminProfile = () => {
 <Col>
 <h4 className="mt-3">Quiz Related</h4>
 {loadingQuiz && <Loader/>}
-  <div  className="bg-blue-100 w-3/4 rounded border border-gray-300 mb-3 ">
-  <h4 className="bg-red-100 p-2 text-black-900 font-medium text-center border border-gray-300">Createtd Quizzes</h4>
+  <div  className="bg-gray-100 w-3/4 rounded border border-gray-300 mb-3 ">
+  <h4 className="bg-blue-100 p-2 text-black-900 font-medium text-center border border-gray-300">Createtd Quizzes</h4>
   {quiz?.length === 0 ? (<p className='ml-3'>No quiz</p>) : (quiz?.map((q,i)=>(
       <h6 className=" p-2 bg-white m-1 font-medium border-y border-gray-300 rounded">{i+1} - {q.title}</h6>
     )))}

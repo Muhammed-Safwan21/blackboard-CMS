@@ -5,6 +5,7 @@ import { useGetLessonDetailsQuery, useReadLessonMutation } from '../slices/lesso
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 const LessonPage = () => {
     const { subjectId, lessonId } = useParams();
@@ -45,7 +46,7 @@ const LessonPage = () => {
                         <div className='w-1/3'><Button variant='info' disabled={lesson.lessonProgress.some(progress => progress.readBy === userInfo._id)}
                          onClick={()=>{readHandler(subjectId,lesson._id)}}>Mark as Read</Button>{' '}</div>
                         <div className='w-2/3'> {lesson.lessonProgress.some(progress => progress.readBy === userInfo._id) ? (
-                        <>Read at: {lesson.lessonProgress.find(progress => progress.readBy === userInfo._id).readAt}</>
+                        <>Read at: {moment(lesson.lessonProgress.find(progress => progress.readBy === userInfo._id).readAt).format("DD/MM/YYYY hh:mm A")}</>
                           ) :(<>Not Read</>) }</div>
                     </div>
                 </ListGroup.Item>

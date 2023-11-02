@@ -142,10 +142,10 @@ const StudentProfile = () => {
          <Col>
 
 <h4 className="mt-3">Subject Related-Read Lessons</h4>
-{subjects.length === 0 && (<p className='ml-3'>No Subjects</p>)}
+{subjects?.length === 0 && (<p className='ml-3'>No Subjects</p>)}
 {subjects?.map((sub)=>(
-  <div  className="bg-blue-100 w-3/4 rounded border border-gray-300 mb-3 ">
-  <h4 className="bg-red-100 p-2 text-black-900 font-medium text-center border border-gray-300">{sub.name}</h4>
+  <div  className="bg-gray-100 w-3/4 rounded border border-gray-300 mb-3">
+  <h4 className="bg-blue-100 p-2 text-black-900 font-medium text-center border border-gray-300">{sub.name}</h4>
    { // Filter lessons read by the current user
     sub.lessons.filter(lesson => lesson.lessonProgress.some(progress => progress.readBy === userInfo._id)).length === 0 ?
     (<p className='ml-2'>No Lessons</p>) :( 
@@ -163,8 +163,8 @@ const StudentProfile = () => {
 <Col>
 <h4 className="mt-3">Quiz Related</h4>
       {loadingQuizProgress && <Loader/>}
-    <div  className="bg-blue-100 rounded border border-gray-300 mb-3 ">
-    <h4 className="bg-red-100 p-2 text-black-900 font-medium text-center border border-gray-300">Attended Quizzes</h4>
+    <div  className="bg-gray-100 rounded border border-gray-300 mb-3 ">
+    <h4 className="bg-blue-100 p-2 text-black-900 font-medium text-center border border-gray-300">Attended Quizzes</h4>
     <Table  hover responsive className='table-sm text-black text-center'>
         <thead>
           <tr>
@@ -176,7 +176,7 @@ const StudentProfile = () => {
           </tr>
         </thead>
         <tbody>
-        {data.length === 0 && (<p className='ml-3'>No results</p>)}
+        {data?.length === 0 && (<p className='ml-3'>No results</p>)}
           {data?.map((q,i)=>(
             <tr key={q._id}>
               <td>{i+1}</td>

@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom'
 import {Table, Button} from 'react-bootstrap'
-import {FaTrash, FaEdit} from 'react-icons/fa';
+import { BiEditAlt} from 'react-icons/bi';
+import {HiOutlineTrash} from 'react-icons/hi';
 import {toast} from 'react-toastify';
 import { useGetAllQuizQuery,useDeleteQuizMutation } from '../../slices/quizApiSlice';
 import Loader from '../../components/Loader';
@@ -44,7 +45,7 @@ const QuizListPage = () => {
           </tr>
         </thead>
         <tbody>
-        {quizzes.length === 0 && (<p className='m-3'>No quizzes</p>)}
+        {quizzes?.length === 0 && (<p className='m-3'>No quizzes</p>)}
           {quizzes.map((quiz,i)=>(
             <tr key={quiz._id}>
               <td>{i+1}</td>
@@ -56,10 +57,10 @@ const QuizListPage = () => {
                 {(userInfo.role === 'admin' || userInfo.role === 'teacher') && (
                   <>
                   <Link to={`${quiz._id}/edit`}>
-                 <Button className='btn-sm' variant='light'><FaEdit size={18}/></Button>
+                 <Button className='btn-sm' variant='light'><BiEditAlt size={20}/></Button>
                  </Link>{' '}
-                <Button className='btn-sm ' variant='danger' onClick={()=>{deleteHandler(quiz._id)}}>
-                    <FaTrash style={{color:'white'}}/>
+                <Button className='btn-sm ' variant='light' onClick={()=>{deleteHandler(quiz._id)}}>
+                    <HiOutlineTrash size={20} style={{color:'red'}}/>
                 </Button>
                   </>
                 )}

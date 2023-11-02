@@ -1,10 +1,11 @@
 import {Link} from 'react-router-dom'
 import {Table, Button} from 'react-bootstrap'
-import {FaTrash, FaEdit} from 'react-icons/fa';
 import {toast} from 'react-toastify';
 import Loader from '../../../components/Loader'
 import { useDeleteUserMutation, useGetStudentsQuery, } from '../../../slices/usersApiSlice';
 import Message from '../../../components/Message';
+import { HiOutlineTrash } from 'react-icons/hi';
+import { BiEditAlt } from 'react-icons/bi';
  
 const StudentsListPage = () => {
   const {data:students , isLoading ,refetch, error} = useGetStudentsQuery();
@@ -43,7 +44,7 @@ const StudentsListPage = () => {
             <tr key={student._id}>
               <td>{student._id}</td>
               <td>{student.name}</td>
-              <td><a href={`mailto:${student.email}`}>{student.email}</a></td>
+              <td><a className='no-underline' href={`mailto:${student.email}`}>{student.email}</a></td>
               {/* <td>{student.subject}</td> */}
              
               <td>
@@ -51,10 +52,10 @@ const StudentsListPage = () => {
                 <Button className='btn-sm' variant='light'>view</Button>
                 </Link>{' '}
                 <Link to={`/students/${student._id}/edit`}>
-                <Button className='btn-sm' variant='light'><FaEdit/></Button>
+                <Button className='btn-sm' variant='light'><BiEditAlt size={20}/></Button>
                 </Link>{' '}
-                <Button className='btn-sm ' variant='danger' onClick={()=>{deleteHandler(student._id)}}>
-                    <FaTrash style={{color:'white'}}/>
+                <Button className='btn-sm ' variant='light' onClick={()=>{deleteHandler(student._id)}}>
+                  <HiOutlineTrash size={20} style={{color:'red'}}/>
                 </Button>
               </td> 
               

@@ -27,7 +27,7 @@ const App = () => {
 
         <main >
           {userInfo === null && (
-            <>
+            <div className='h-[89vh] overflow-y-auto scrollbar'>
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/about" element={<AboutPage />} />
@@ -38,7 +38,7 @@ const App = () => {
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
             <Footer />
-            </>
+            </div>
           )}
 
           {userInfo?.role === 'admin' && <AdminDashboard />}

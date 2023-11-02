@@ -16,13 +16,6 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans"],
       },
-      scrollbar: {
-        width: '1px',
-        thumb: {
-          backgroundColor: '#c1c1c1',
-          borderRadius: '10px',
-        },
-    },
   },
 }
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { Link, useParams } from 'react-router-dom'
 import { useGetQuizByIdQuery, useGetQuizHistoryByUserQuery } from '../../slices/quizApiSlice'
@@ -10,7 +10,10 @@ const QuizHomePage = () => {
   const {id:quizId} = useParams()
 
   const {data:quiz,isLoading,error} = useGetQuizByIdQuery(quizId)
-  const {data,isLoading:loadingHistory} = useGetQuizHistoryByUserQuery(quizId)
+  const {data,isLoading:loadingHistory,refetch} = useGetQuizHistoryByUserQuery(quizId)
+  useEffect(()=>{
+    refetch()
+  },[data,refetch])
 
     
   return (
@@ -51,7 +54,6 @@ const QuizHomePage = () => {
           </tr>
         </thead>
         <tbody>
-        {data.length === 0 && (<p className='ml-3'>No Previous Results</p>)}
           {data?.map((q,i)=>(
             <tr key={q._id}>
               <td>{i+1}</td>
@@ -63,6 +65,7 @@ const QuizHomePage = () => {
           ))}
         </tbody>
       </Table>
+      {data?.length === 0 && (<> No Previous Results</>)}
     </div>
     </div>
     </>

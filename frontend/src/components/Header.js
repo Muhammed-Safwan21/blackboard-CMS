@@ -20,13 +20,13 @@ const Header = () => {
                 <Navbar.Collapse id='basic-navbar-nav'>
                   <Nav className='ms-auto '>
                   <LinkContainer to='/about'>
-                <Nav.Link className='text-white'>About Us</Nav.Link>
+                <Nav.Link className='text-white mx-2'>About Us</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/contact'>
-                <Nav.Link className='text-white'>Contact Us</Nav.Link>
+                <Nav.Link className='text-white mx-2'>Contact Us</Nav.Link>
               </LinkContainer>
               <LinkContainer to='/faq'>
-                <Nav.Link className='text-white'>FAQ</Nav.Link>
+                <Nav.Link className='text-white mx-2'>FAQ</Nav.Link>
               </LinkContainer>
               {userInfo && (
                 <div className='ml-3 flex flex-row items-center px-2 rounded-md bg-white text-black'>

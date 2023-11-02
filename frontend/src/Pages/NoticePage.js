@@ -53,8 +53,8 @@ const deleteHandler = async (id) => {
     {notices?.length > 0 ? (
       <>
       {notices.map((notice)=>(
-       <div className='bg-blue-100 rounded border border-gray-300 m-2'>
-       <div className='flex p-2 justify-around items-center bg-red-100 text-black-900 font-medium text-center border border-gray-300'>
+       <div className='bg-gray-100 rounded border border-gray-300 m-2'>
+       <div className='flex p-2 justify-around items-center bg-blue-100 text-black-900 font-medium text-center border border-gray-300'>
            <h3 className='mb-0'>{notice.title}</h3>
            <h3 className='mb-0'>{moment(notice.createdAt).format("DD/MM/YYYY hh:mm A")}</h3>
            {(userInfo?.role === 'admin' || userInfo?.role === 'teacher') && (

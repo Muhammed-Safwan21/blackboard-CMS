@@ -1,11 +1,12 @@
 import {Link} from 'react-router-dom'
 import {Table, Button} from 'react-bootstrap'
-import {FaTrash, FaEdit} from 'react-icons/fa';
 import {toast} from 'react-toastify';
 import { useGetAdminsQuery,useDeleteUserMutation } from '../../slices/usersApiSlice';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import { useSelector } from 'react-redux';
+import { HiOutlineTrash } from 'react-icons/hi';
+import { BiEditAlt } from 'react-icons/bi';
  
 const AdminListPage = () => {
   const {data:admins , isLoading ,refetch, error} = useGetAdminsQuery();
@@ -39,22 +40,22 @@ const AdminListPage = () => {
           </tr>
         </thead>
         <tbody>
-          {admins.length === 0 && (<p className='ml-3'>No admins</p>)}
-          {admins.map((admin)=>(
+          {admins?.length === 0 && (<p className='ml-3'>No admins</p>)}
+          {admins?.map((admin)=>(
             <tr key={admin._id}>
               <td>{admin._id}</td>
               <td>{admin.name} ({userInfo.name === admin.name ? 'me' : '' })</td>
-              <td><a href={`mailto:${admin.email}`}>{admin.email}</a></td>
+              <td><a className='no-underline' href={`mailto:${admin.email}`}>{admin.email}</a></td>
              
               <td>
               <Link to={`/admins/${admin._id}`}>
                 <Button className='btn-sm' variant='light'>view</Button>
                 </Link>{' '}
                 <Link to={`/admins/${admin._id}/edit`}>
-                <Button className='btn-sm' variant='light'><FaEdit/></Button>
+                <Button className='btn-sm' variant='light'><BiEditAlt size={20}/></Button>
                 </Link>{' '}
-                <Button className='btn-sm ' variant='danger' onClick={()=>{deleteHandler(admin._id)}}>
-                    <FaTrash style={{color:'white'}}/>
+                <Button className='btn-sm ' variant='light' onClick={()=>{deleteHandler(admin._id)}}>
+                <HiOutlineTrash size={20} style={{color:'red'}}/>
                 </Button>
               </td> 
               

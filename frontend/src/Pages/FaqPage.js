@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {IoIosArrowDropupCircle} from 'react-icons/io'
 
 const faqData = [
   {
@@ -56,12 +57,9 @@ const FaqPage = () => {
             <li key={index} className="mb-4 shadow-md p-2">
               <div className="flex justify-between items-center ">
                 <h2 className="text-lg font-semibold">{faq.question}</h2>
-                <button
-                  className="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
-                  onClick={() => toggleQuestion(index)}
-                >
-                  {expandedQuestions.includes(index) ? 'Hide Answer' : 'Show Answer'}
-                </button>
+                <div className="" onClick={() => toggleQuestion(index)}>
+                  {(expandedQuestions.includes(index)) ? (<IoIosArrowDropupCircle size={24}/> ): (<IoIosArrowDropupCircle size={24} className='transform rotate-180'/>) }
+                </div>
               </div>
               {expandedQuestions.includes(index) && (
                 <p className="text-gray-600 mt-2">{faq.answer}</p>
