@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import {FiLogOut} from 'react-icons/fi'
+import SearchBox from "./SearchBox";
 
 const Sidebar = () => {
   
@@ -32,7 +33,9 @@ const Sidebar = () => {
   return (
     <>
     <div className="bg-gray-200 h-full">
-      <p className="text-center bg-white mb-0 p-2 border-r ">Menu</p>
+      <div>
+      <SearchBox/>
+      </div>
       <div className=" text-xl border-r border-gray-300">
           
           <Link to='/dashboard' className="no-underline">

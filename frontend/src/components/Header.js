@@ -4,6 +4,7 @@ import {FaUser} from 'react-icons/fa'
 import { useSelector } from 'react-redux'
 import logo from '../assets/logo.png'
 import { LinkContainer} from 'react-router-bootstrap'
+import SearchBox from './SearchBox'
 
 
 const Header = () => {
@@ -16,6 +17,7 @@ const Header = () => {
                     <img src={logo} className='w-41 h-8' alt='blackboard'/>
                     </Navbar.Brand>
                 </LinkContainer>
+                    
                 <Navbar.Toggle aria-controls='basic-navbar-nav'/>
                 <Navbar.Collapse id='basic-navbar-nav'>
                   <Nav className='ms-auto '>

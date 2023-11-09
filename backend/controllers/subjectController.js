@@ -5,7 +5,10 @@ import Subject from "../models/subjectModel.js";
 
 //  fetch all subject
 const getAllSubjects = asyncHandler(async(req,res)=>{
-    const subjects = await Subject.find({});
+  const keyword = req.query.keyword ? {name:{$regex : req.query.keyword , $options:'i'}} 
+  : {} ; 
+
+    const subjects = await Subject.find({...keyword});
     res.json(subjects)
 })
 

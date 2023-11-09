@@ -27,12 +27,12 @@ const UserDetailsPage = () => {
         } className="btn btn-light my-3">
         Go Back
     </Link>
-    <Row>
+    <Row className='border p-4'>
        
         {loadingUser ?  (<Loader/>) : userError ? (<Message variant='danger'>{error}</Message>) :(
              <Col md={6} >
              <h2>Profile Details</h2>
-                  <div className="w-4/5 bg-blue-100 p-4 flex flex-column items-center border border-gray-300 rounded">
+                  <div className="w-4/5 bg-blue-100 mt-2 p-4 flex flex-column items-center border border-gray-300 rounded">
                   <div className="mb-4"><BiUserCircle size={64}/></div>
                   <div>
                     <h4>Name : {user?.name}</h4>
@@ -45,7 +45,7 @@ const UserDetailsPage = () => {
         ) }     
     </Row>
     { user?.role === 'student' ? (
-        <Row className="mt-3">
+        <Row className="mt-3 border p-4">
         <h2>Activities</h2>
         {isLoading ? (<Loader/>) : error ? (<Message variant='danger'>{error}</Message>) : (
           <>
@@ -107,8 +107,8 @@ const UserDetailsPage = () => {
       </Row>
     ) : 
     (
-        <Row className="mt-5">
-      <h2 className='mb-1'>Activities</h2>
+        <Row className="mt-4 border p-4">
+      <h2 className='mb-2'>Activities</h2>
       {loadingCreatorSubjects ? (<Loader/>) : creatorSubjectError ? (<Message variant='danger'>{error?.data?.message}</Message>) : (
         <>
          <Col>

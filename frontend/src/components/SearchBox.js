@@ -21,17 +21,18 @@ const SearchBox = () => {
     }
 
   return (
-    <Form  className="flex items-center justify-center">
-        <div className="border border-white w-10 rounded-md mb-0 flex items-center mr-2 px-1 h-11">
-        <CiSearch color="white" size={32}  onClick={submitHandler}/>
-        </div>
+    <Form  className="flex items-center justify-center rounded-md p-2">
+        
         <FormControl
         type="text"
         name="q"
         onChange={(e)=>setKeyword(e.target.value)}
         value={keyword}
-        placeholder="Search ..."
-        className="mr-sm-2 ml-sm-5 border-secondary"></FormControl>
+        placeholder="search here..."
+        className="mr-sm-2 ml-sm-5 h-10 border focus:outline-none"></FormControl>
+        <div className="border w-10 rounded-md mb-0 flex items-center ml-2 px-1 h-10">
+        <CiSearch color="" size={24}  onClick={submitHandler}/>
+        </div>
     </Form>
   )
 }

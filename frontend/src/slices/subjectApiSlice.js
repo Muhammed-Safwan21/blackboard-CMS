@@ -5,9 +5,10 @@ const UPLOAD_URL = '/api/upload'
 export const subjectApiSlice = apiSlice.injectEndpoints({
     endpoints:(builder)=>({
         getAllSubjects:builder.query({
-            query:()=>({
+            query:(keyword)=>({
                 url:SUBJECT_URL,
                 method:'GET',
+                params:keyword,
 
             }),providesTags:['Subject'],keepUnusedDataFor:5
         }),

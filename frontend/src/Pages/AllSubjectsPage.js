@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import SubjectModal from "./Admin/Subject/SubjectModal";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDeleteSubjectMutation, useGetAllSubjectsQuery } from "../slices/subjectApiSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -9,10 +9,15 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const AllSubjectsPage = () => {
-  const {data:subjects,isLoading,refetch,error} = useGetAllSubjectsQuery()
+  const  {keyword}  = useParams();
+  console.log(keyword)
+
+  const {data:subjects,isLoading,refetch,error} = useGetAllSubjectsQuery(keyword)
   const [deleteSubject, { isLoading: loadingDelete}] = useDeleteSubjectMutation();
   const [showModal, setShowModal] = useState(false);
   const [editingSubject, setEditingSubject] = useState(null);
+
+ 
 
   const {userInfo} = useSelector(state=>state.auth)
 

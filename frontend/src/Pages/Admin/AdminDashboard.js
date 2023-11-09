@@ -40,6 +40,7 @@ const AdminDashboard = () => {
 
 
                         <Route path="/subjects" element={<AllSubjectsPage />} />
+                        <Route path="/search/:keyword" element={<AllSubjectsPage />} />
                         <Route path='/subjects/:subjectId' element={<SubjectPage/>} />
                         <Route path='/subjects/:subjectId/lesson/:lessonId' element={<LessonPage/>} />
 

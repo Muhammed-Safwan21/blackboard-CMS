@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { setCredentials } from "../../slices/authSlice";
 import Loader from "../../components/Loader";
-import { useUpdateUserMutation } from "../../slices/usersApiSlice";
+import { useUpdateUserProfileMutation } from "../../slices/usersApiSlice";
 import {BiUserCircle} from 'react-icons/bi'
 import { useGetSubjectByCreatorQuery } from "../../slices/subjectApiSlice";
 import Message from "../../components/Message";
@@ -21,7 +21,7 @@ const AdminProfile = () => {
     const dispatch = useDispatch();
     const {userInfo} = useSelector((state)=>state.auth);
     const userId = userInfo._id;
-    const [updateUser , {isLoading : loadingUpdate}] = useUpdateUserMutation()
+    const [updateUser , {isLoading : loadingUpdate}] = useUpdateUserProfileMutation()
     const {data:subjects,isLoading,error} = useGetSubjectByCreatorQuery(userId)
     const {data:quiz,isLoading:loadingQuiz} = useGetQuizByCreatorQuery(userId)
 

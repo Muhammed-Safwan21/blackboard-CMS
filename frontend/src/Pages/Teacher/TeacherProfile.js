@@ -53,10 +53,10 @@ const TeacherProfile = () => {
   <>
    
       {loadingUpdate && <Loader/>}
-    <Row >
+    <Row className="border p-4">
        <Col md={6} >
        <h2>Profile Details</h2>
-            <div className="w-4/5 bg-blue-100 p-4 flex flex-column items-center border border-gray-300 rounded">
+            <div className="w-4/5 bg-blue-100 mt-3 p-4 flex flex-column items-center border border-gray-300 rounded">
             <div className="mb-4"><BiUserCircle size={64}/></div>
             <div>
               <h4>Name : {userInfo.name}</h4>
@@ -135,7 +135,7 @@ const TeacherProfile = () => {
         </Col>
         
     </Row>
-    <Row className="mt-3">
+    <Row className="mt-3 border p-4">
       <h2>Activities</h2>
       {isLoading ? (<Loader/>) : error ? (<Message variant='danger'>{error?.data?.message}</Message>) : (
         <>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useCreateQuizMutation, useUpdateQuizMutation } from '../../slices/quizApiSlice';
 import Loader from '../../components/Loader';
@@ -61,7 +61,7 @@ const CreateQuiz = ({ quiz }) => {
   const validateCheckbox = () => {
     // Validate that at least one checkbox is checked for each question
     for (const question of questions) {
-      if ((question?.correctAnswer === undefined)) {
+      if ((question?.correctAnswer === null)) {
         toast.error('Please select a correct answer for each question.');
         return false;
       }
@@ -99,10 +99,11 @@ const CreateQuiz = ({ quiz }) => {
   }
   return (
     <>
+    <Link to='/quizzes' ><Button variant='light'>Go Back</Button></Link>
       {loadingUpdate && <Loader/>}
       {isLoading ? (<Loader/>) : error ? (<Message variant='danger'>{error.data?.message}</Message>) : (
         <>
-         <h1>{quiz ? 'Edit Quiz' : 'Create quiz'}</h1>
+         <h1 className='mt-3'>{quiz ? 'Edit Quiz' : 'Create quiz'}</h1>
       <div className='flex justify-center mb-4'>
         <Form onSubmit={submitHandler} className="text-black w-2/3 p-3 bg-blue-100 rounded-lg">
           <Form.Group controlId="title" className="my-2">
